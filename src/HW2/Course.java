@@ -20,6 +20,15 @@ public class Course {
         this.prerequisites = prerequisites;
     }
 
+    public Course(String courseCode, String courseName, int credits, String instructor, int maxEnrollment) {
+        this.courseCode = courseCode;
+        this.courseName = courseName;
+        this.credits = credits;
+        this.instructor = instructor;
+        this.maxEnrollment = maxEnrollment;
+        this.prerequisites = new ArrayList<>();
+    }
+
     public String getCourseCode() {
         return courseCode;
     }

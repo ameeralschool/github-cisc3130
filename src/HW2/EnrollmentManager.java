@@ -9,8 +9,18 @@ public class EnrollmentManager {
     public EnrollmentManager() {
         this.enrollments = new ArrayList<>();
     }
-
-    public void enrollStudent(String enrollmentId, String studentId, String courseCode, String semester) {
+    private int enrollmentCounter = 0;
+    public void enrollStudent(String studentId, String courseCode, String semester) {
+        for (Enrollment enrollment : enrollments) {
+            if (enrollment.getStudentId().equals(studentId) &&
+                    enrollment.getCourseCode().equals(courseCode) &&
+                    enrollment.getSemester().equals(semester)) {
+                System.out.println("Student is already enrolled in this course.");
+                return;
+            }
+        }
+        enrollmentCounter++;
+        String enrollmentId = String.format("E%03d", enrollmentCounter);
         enrollments.add(new Enrollment(enrollmentId, studentId, courseCode, null, semester));
     }
 

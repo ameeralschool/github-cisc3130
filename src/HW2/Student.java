@@ -2,7 +2,7 @@ package HW2;
 
 import java.util.Objects;
 
-public class Student {
+public class Student implements Comparable<Student> {
     private String studentID;
     private String firstName;
     private String lastName;
@@ -104,5 +104,14 @@ public class Student {
         return Objects.hashCode(studentID);
     }
 
+    @Override
+    public int compareTo(Student other) {
+        // compare by GPA descending (higher GPA comes first)
+        return Double.compare(other.gpa, this.gpa);
+    }
+
 
 }
+
+
+

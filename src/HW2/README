@@ -1,0 +1,95 @@
+README.txt - Student Management System (HW2)
+
+DESCRIPTION OF CLASSES
+
+Student.java - represents a student with ID, name, email, GPA, major, and year.
+  implements Comparable to allow sorting by GPA.
+
+Course.java - represents a course with code, name, credits, instructor, max enrollment,
+  and a list of prerequisite course codes.
+
+Enrollment.java - represents a students enrollment in a course for a semester.
+  tracks the grade and has helpers like getGradePoints() and isPassing().
+
+StudentManager.java - manages an ArrayList of Students. can add, remove, find,
+  and filter students by major, year, or GPA. calculates average GPA.
+
+CourseManager.java - manages an ArrayList of Courses. can add, find, and list courses.
+  getAvailableCourses checks prerequisites and current enrollments.
+
+EnrollmentManager.java - manages an ArrayList of Enrollments. handles enrolling,
+  dropping, assigning grades, and calculating GPA from enrollment records.
+
+ReportGenerator.java - generates reports for students, courses, majors, and honor roll.
+
+ArrayListUtils.java - generic utility methods like swap, findMax, filter, reverse, merge.
+  also has bounded generic methods for Numbers and wildcard demonstrations.
+
+GenericPredicate.java - simple generic interface with a test method for filtering.
+
+GenericList.java - generic wrapper around ArrayList. has add, get, remove, size,
+  isEmpty, clear, contains, getAll, addAll, addAllFrom, sort, and findMax.
+
+GenericStack.java - generic stack (LIFO) using ArrayList. push, pop, peek.
+
+GenericQueue.java - generic queue (FIFO) using ArrayList. enqueue, dequeue, peek.
+
+Pair.java - generic class with two type parameters K and V. has getters setters
+  equals hashCode and toString.
+
+ArrayListOperationsDemo.java - demonstrates array to ArrayList conversion,
+  subList operations, sorting with Comparator, and searching.
+
+ArrayListVsArrayDemo.java - compares arrays vs ArrayLists showing limitations
+  of arrays and measuring performance.
+
+StudentManagementSystemMain.java - main application with sample data, generics
+  demo, and interactive menu system.
+
+
+HOW TO COMPILE AND RUN
+
+open in IntelliJ with all files in an HW2 folder inside src.
+right click StudentManagementSystemMain.java and hit Run.
+for the demos right click ArrayListOperationsDemo or ArrayListVsArrayDemo and Run.
+
+
+DESIGN DECISIONS
+
+- Student implements Comparable comparing by GPA descending so sorting puts highest first.
+- made a GenericPredicate interface instead of using java.util.function.Predicate
+  to keep it simple and show how interfaces work with generics.
+- enrollment IDs are auto generated with a counter (E001, E002, etc).
+- used String.format for GPA output to keep it to 2 decimal places.
+- GenericList sort and findMax use try catch since we cant enforce Comparable
+  at the class level without changing the type parameter.
+
+
+CHALLENGES
+
+- understanding that subList returns a view not a copy.
+- binarySearch needs the list sorted by the same ordering as compareTo.
+- bounded generics syntax like <T extends Number & Comparable<T>> was tricky at first.
+- wildcards (? extends, ? super, ?) are confusing but PECS helps:
+  Producer Extends, Consumer Super.
+
+
+WHAT I LEARNED
+
+- ArrayLists handle resizing automatically unlike arrays where you manually
+  create a new array and copy everything.
+- generics give type safety at compile time so you cant accidentally put
+  the wrong type in a collection.
+- <T extends Comparable<T>> lets you write methods that work with any
+  comparable type making code reusable.
+- wildcards make methods even more flexible. extends for reading,
+  super for writing, ? for just iterating.
+
+
+ARRAYLIST VS ARRAY
+
+arrays are faster for direct access and use less memory but they are fixed size.
+ArrayLists grow dynamically and have useful methods like add remove and contains
+but have slightly more overhead. for most cases where size isnt known ahead
+of time ArrayLists are the better choice. arrays are better when you know
+the exact size and need performance with primitives.

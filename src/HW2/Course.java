@@ -73,7 +73,7 @@ public class Course {
         return new ArrayList<>(prerequisites);
     }
 
-    public void setPrerequisites(ArrayList prerequisites) {
+    public void setPrerequisites(ArrayList <String> prerequisites) {
         this.prerequisites = prerequisites;
     }
 
